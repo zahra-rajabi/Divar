@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import api from "../configs/api";
+import api from "configs/api";
 
 const sendOTP = async (mobile) => {
   try {

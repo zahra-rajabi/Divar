@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SendOTP from "../components/templates/SendOTP";
-import CheckOTP from "../components/templates/CheckOTP";
+import SendOTP from "src/components/templates/SendOTP";
+import CheckOTP from "components/templates/CheckOTP";
 
 function AuthPage() {
   const [step, setStep] = useState(1);

@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { sendOTP } from "../../services/auth";
+import { sendOTP } from "services/auth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
