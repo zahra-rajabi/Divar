@@ -6,6 +6,7 @@ function AuthPage() {
   const [step, setStep] = useState(1);
   const [mobileNumber, setMobileNumber] = useState("");
   const [code, setCode] = useState("");
+
   return (
     <>
       {step === 1 && (
