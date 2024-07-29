@@ -1,5 +1,5 @@
 function App() {
-  return <>Divar project</>;
+  return <p>پروژه دیوار</p>;
 }
 
 export default App;
