@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { checkOTP } from "../../services/auth";
+import setCookie from "../../utils/cookie";
 import { ToastContainer } from "react-toastify";
 
 function CheckOTP({ code, setCode, setStep, mobileNumber }) {
@@ -11,7 +12,11 @@ function CheckOTP({ code, setCode, setStep, mobileNumber }) {
   const submitHandler = async () => {
     const { response, error } = await checkOTP(mobileNumber, code);
     if (error) console.log(error.response.data.message);
-    if (response) console.log(response);
+    if (response)
+      setCookie({
+        accessToken: response.data.accessToken,
+        refreshToken: response.data.refreshToken,
+      });
   };
   return (
     <form onSubmit={handleSubmit(submitHandler)}>
