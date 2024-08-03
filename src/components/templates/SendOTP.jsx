@@ -13,7 +13,7 @@ function SendOTP({ mobileNumber, setStep, setMobileNumber }) {
   const submitHandler = async () => {
     const { response, error } = await sendOTP(mobileNumber);
     if (response) setStep(2);
-    if (error) console.log(error.response.data.message);
+    if (error) console.log(error.response);
   };
 
   return (

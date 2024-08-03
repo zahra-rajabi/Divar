@@ -2,13 +2,22 @@ import { useForm } from "react-hook-form";
 import { checkOTP } from "services/auth";
 import { setCookie } from "utils/cookie";
 import { ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { getProfile } from "services/user";
+import { useQuery } from "@tanstack/react-query";
 
 function CheckOTP({ code, setCode, setStep, mobileNumber }) {
+  const navigate = useNavigate();
+  const { refetch } = useQuery({
+    queryKey: ["profile"],
+    queryFn: getProfile,
+  });
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm();
+
   const submitHandler = async () => {
     const { response, error } = await checkOTP(mobileNumber, code);
     if (error) console.log(error.response.data.message);
@@ -17,6 +26,9 @@ function CheckOTP({ code, setCode, setStep, mobileNumber }) {
         accessToken: response.data.accessToken,
         refreshToken: response.data.refreshToken,
       });
+    navigate("/");
+    refetch(["profile"]);
+    console.clear();
   };
   return (
     <form onSubmit={handleSubmit(submitHandler)}>

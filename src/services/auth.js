@@ -6,10 +6,10 @@ const sendOTP = async (mobile) => {
     const response = await api.post("auth/send-otp", { mobile });
     return { response };
   } catch (error) {
-    if (error.response && error.response.status === 404) {
+    if (error.response.status === 404) {
       toast.error("مشکلی پیش آمده است");
     }
-    return { error };
+    return;
   }
 };
 
