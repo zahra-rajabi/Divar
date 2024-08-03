@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { checkOTP } from "services/auth";
-import setCookie from "utils/cookie";
+import { setCookie } from "utils/cookie";
 import { ToastContainer } from "react-toastify";
 
 function CheckOTP({ code, setCode, setStep, mobileNumber }) {
