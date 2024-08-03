@@ -31,36 +31,62 @@ function CheckOTP({ code, setCode, setStep, mobileNumber }) {
     console.clear();
   };
   return (
-    <form onSubmit={handleSubmit(submitHandler)}>
-      <p>ورود به حساب کاربری</p>
-      <p>
-        کد پیامک‌شده به شمارۀ <span>{mobileNumber}</span>را وارد کنید.
-      </p>
-      <label htmlFor="code">کد تأیید را وارد کنید</label>
-      <input
-        type="text"
-        id="code"
-        placeholder="کد تایید"
-        value={code}
-        {...register("code", {
-          required: "کد ارسالی را وارد نمایید",
-          pattern: {
-            value: /[0-9]{5}/,
-            message: "کد ارسالی باید پنج رقم باشد",
-          },
-        })}
-        onChange={(e) => setCode(e.target.value)}
-      />
-      {errors.code && errors.code.type === "required" && (
-        <p>وارد کردن کد ارسالی الزامی است.</p>
-      )}
-      {errors.code && errors.code.type === "pattern" && (
-        <p>کد ارسالی ۵ رقمی را وارد نمایید</p>
-      )}
-      <button type="submit">ورود</button>
-      <button onClick={() => setStep(1)}>تغییر شماره موبایل</button>
-      <ToastContainer />
-    </form>
+    <section className="form-container">
+      <form onSubmit={handleSubmit(submitHandler)} className="form">
+        <p className="title">ورود به حساب کاربری</p>
+        <div className="form-box">
+          <p className="label">
+            <label htmlFor="code"> کد تأیید را وارد کنید</label>
+          </p>
+          <p className="description">
+            کد پیامک‌شده به شمارۀ <span> {mobileNumber} </span>را وارد کنید.
+          </p>
+          <div
+            className={` w-full border-2 border-GRAY/60 hover:border-GRAY/100 p-2 my-4  rounded ${
+              errors?.code
+                ? "border-red-500  focus-within:!outline-none hover:border-red-500"
+                : " focus-within:border-2 focus-within:border-LIGHT_RED focus-within:hover:border-LIGHT_RED "
+            }`}
+          >
+            <input
+              type="text"
+              id="code"
+              autoComplete="off"
+              className="input"
+              placeholder="کد تایید"
+              value={code}
+              {...register("code", {
+                required: "کد ارسالی را وارد نمایید",
+                pattern: {
+                  value: /[0-9]{5}/,
+                  message: "کد ارسالی باید پنج رقم باشد",
+                },
+              })}
+              onChange={(e) => setCode(e.target.value)}
+            />
+          </div>
+
+          {errors.code && errors.code.type === "required" && (
+            <p className="error">وارد کردن کد ارسالی الزامی است.</p>
+          )}
+          {errors.code && errors.code.type === "pattern" && (
+            <p className="error">کد ارسالی ۵ رقمی را وارد نمایید</p>
+          )}
+          <button
+            onClick={() => setStep(1)}
+            className="text-GRAY bg-gray-100 px-6 py-3 rounded-full text-xs "
+          >
+            تغییر شماره موبایل
+          </button>
+        </div>
+        <div className="text-left py-4 px-4">
+          <button type="submit" className="button">
+            ورود
+          </button>
+        </div>
+        <ToastContainer />
+      </form>
+    </section>
   );
 }
 
