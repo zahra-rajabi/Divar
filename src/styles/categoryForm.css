@@ -1,0 +1,9 @@
+.categoryForm {
+  @apply flex flex-col w-full sm:w-2/3  md:w-2/5 gap-2;
+}
+.categoryInput {
+  @apply border-2 focus:outline-none focus:border-RED p-1;
+}
+.categoryError {
+  @apply text-red-500 text-sm mb-3;
+}

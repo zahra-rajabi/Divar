@@ -3,6 +3,7 @@
 @import "tailwindcss/utilities";
 @import "./fonts.css";
 @import "./OTP.css";
+@import "./categoryForm.css";
 
 .left-direction {
   direction: ltr;
