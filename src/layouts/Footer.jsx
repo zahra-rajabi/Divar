@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer>
+    <footer className="border-t-2 py-4 text-center ">
       <p>developed by zahra ☁️</p>
     </footer>
   );

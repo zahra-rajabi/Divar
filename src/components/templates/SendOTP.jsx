@@ -53,7 +53,7 @@ function SendOTP({ mobileNumber, setStep, setMobileNumber }) {
               })}
               onChange={(e) => setMobileNumber(e.target.value)}
             />
-            <p className="bg-Gray">+۹۸</p>
+            <p className="bg-Gray">۹۸+</p>
           </div>
           {errors?.mobile && (
             <p role="alert" className="error">
@@ -67,7 +67,7 @@ function SendOTP({ mobileNumber, setStep, setMobileNumber }) {
             دیوار را می‌پذیرم.
           </span>
         </div>
-        <div className="text-left py-4 px-4">
+        <div className="px-4 py-4 text-left">
           <button className="button" type="submit">
             تأیید
           </button>

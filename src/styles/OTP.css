@@ -6,7 +6,7 @@
     @apply flex justify-center items-center h-screen;
   }
   .form {
-    @apply w-full sm:w-2/3 md:w-1/2 shadow-lg rounded-lg bg-white;
+    @apply w-full sm:w-2/3 md:w-3/5 lg:w-2/5 shadow-lg rounded-lg bg-white;
   }
   .description {
     @apply text-GRAY py-4 text-xs md:text-sm lg:text-base leading-loose;
