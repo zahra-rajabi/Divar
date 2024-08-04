@@ -1,25 +1,31 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { addCategory } from "services/admin";
 
 function CategoryForm() {
+  const queryClient = useQueryClient();
   const [categoryForm, setCategoryForm] = useState({
     name: "",
     slug: "",
     icon: "",
   });
+
+  const successHandler = () => {
+    queryClient.invalidateQueries();
+  };
   const [visible, isVisible] = useState(false);
 
   const {
     register,
     setValue,
     handleSubmit,
-
     formState: { errors },
   } = useForm();
+
   const { mutate, isPending, isSuccess } = useMutation({
     mutationFn: addCategory,
+    onSuccess: successHandler,
   });
 
   const changeHandler = (e) => {

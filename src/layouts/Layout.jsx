@@ -6,7 +6,7 @@ function Layout({ children }) {
   return (
     <>
       <Header />
-      <div className="h-screen"> {children}</div>
+      <section> {children}</section>
       <Footer />
     </>
   );
