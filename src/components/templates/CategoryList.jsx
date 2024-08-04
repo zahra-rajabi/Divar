@@ -1,21 +1,22 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Loader from "components/modules/Loader";
 import { deletCategory, getCategory } from "services/admin";
 import { FiTrash } from "react-icons/fi";
 
 function CategoryList() {
-  const { data, isPending, refetch } = useQuery({
+  const queryClient = useQueryClient();
+  const { data, isLoading, refetch } = useQuery({
     queryKey: ["Categories"],
     queryFn: getCategory,
   });
 
   const { mutate } = useMutation({
     mutationFn: deletCategory,
+    onSuccess: () => queryClient.refetchQueries(),
   });
-  const clickHandler = (id) => {
-    console.log("clicked");
+  const deleteHandler = async (id) => {
     mutate(id);
-    refetch("Categories");
+    queryClient.invalidateQueries("Categories");
   };
 
   return (
@@ -23,15 +24,17 @@ function CategoryList() {
       <h2 className="px-2 py-4 mb-4 text-lg font-medium border-b border-b-GRAY">
         دسته بندی ها
       </h2>
-      {isPending ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <table>
           <thead className="text-white bg-BLACK">
-            <th>icon</th>
-            <th>slug</th>
-            <th>name</th>
-            <th>delete</th>
+            <tr>
+              <th>icon</th>
+              <th>slug</th>
+              <th>name</th>
+              <th>delete</th>
+            </tr>
           </thead>
           <tbody>
             {data?.data.map((i) => (
@@ -41,8 +44,11 @@ function CategoryList() {
                 </td>
                 <td>{i.slug}</td>
                 <td>{i.name}</td>
-                <td onClick={() => clickHandler(i._id)}>
-                  <FiTrash className="mx-auto cursor-pointer hover:text-RED size-5" />
+                <td>
+                  <FiTrash
+                    className="mx-auto cursor-pointer hover:text-RED size-5"
+                    onClick={() => deleteHandler(i._id)}
+                  />
                 </td>
               </tr>
             ))}

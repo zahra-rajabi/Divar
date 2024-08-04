@@ -11,9 +11,6 @@ function CategoryForm() {
     icon: "",
   });
 
-  const successHandler = () => {
-    queryClient.invalidateQueries();
-  };
   const [visible, isVisible] = useState(false);
 
   const {
@@ -25,19 +22,18 @@ function CategoryForm() {
 
   const { mutate, isPending, isSuccess } = useMutation({
     mutationFn: addCategory,
-    onSuccess: successHandler,
+    onSuccess: () => queryClient.refetchQueries(),
   });
 
   const changeHandler = (e) => {
     setCategoryForm({ ...categoryForm, [e.target.id]: e.target.value });
   };
-  const submitHandler = async () => {
+  const submitHandler = () => {
     mutate(categoryForm);
     setValue("name", "");
     setValue("slug", "");
     setValue("icon", "");
     isVisible(true);
-
     setTimeout(() => isVisible(false), 3000);
   };
 
