@@ -2,28 +2,37 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Loader from "components/modules/Loader";
 import { deletCategory, getCategory } from "services/admin";
 import { FiTrash } from "react-icons/fi";
+import { useState } from "react";
 
 function CategoryList() {
   const queryClient = useQueryClient();
-  const { data, isLoading, refetch } = useQuery({
+  const [Show, isShow] = useState(false);
+  const { data, isLoading } = useQuery({
     queryKey: ["Categories"],
     queryFn: getCategory,
   });
 
-  const { mutate } = useMutation({
+  const { mutate, isSuccess } = useMutation({
     mutationFn: deletCategory,
     onSuccess: () => queryClient.refetchQueries(),
   });
-  const deleteHandler = async (id) => {
+  const deleteHandler = (id) => {
     mutate(id);
     queryClient.invalidateQueries("Categories");
+    isShow(true);
+    setTimeout(() => isShow(false), 3000);
   };
 
   return (
     <div className="mb-10 categoryForm">
       <h2 className="px-2 py-4 mb-4 text-lg font-medium border-b border-b-GRAY">
         دسته بندی ها
-      </h2>
+      </h2>{" "}
+      {isSuccess && Show && (
+        <p className="p-2 mb-4 text-white rounded bg-RED">
+          دسته بندی با موفقیت حذف شد!
+        </p>
+      )}
       {isLoading ? (
         <Loader />
       ) : (

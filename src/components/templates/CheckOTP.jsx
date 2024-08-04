@@ -12,6 +12,7 @@ function CheckOTP({ code, setCode, setStep, mobileNumber }) {
     queryKey: ["profile"],
     queryFn: getProfile,
   });
+
   const {
     handleSubmit,
     register,
@@ -74,12 +75,12 @@ function CheckOTP({ code, setCode, setStep, mobileNumber }) {
           )}
           <button
             onClick={() => setStep(1)}
-            className="text-GRAY bg-gray-100 px-6 py-3 rounded-full text-xs "
+            className="px-6 py-3 text-xs bg-gray-100 rounded-full text-GRAY "
           >
             تغییر شماره موبایل
           </button>
         </div>
-        <div className="text-left py-4 px-4">
+        <div className="px-4 py-4 text-left">
           <button type="submit" className="button">
             ورود
           </button>
