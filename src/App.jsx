@@ -3,7 +3,6 @@ import { BrowserRouter } from "react-router-dom";
 import { defaultOptions } from "configs/reactQuery";
 import Router from "router/Router";
 import Layout from "layouts/Layout";
-// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function App() {
   const queryClient = new QueryClient({
@@ -16,7 +15,6 @@ function App() {
           <Router />
         </Layout>
       </BrowserRouter>
-      {/* <ReactQueryDevtools /> */}
     </QueryClientProvider>
   );
 }
