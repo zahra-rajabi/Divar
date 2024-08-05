@@ -9,31 +9,32 @@ function PostList() {
     queryFn: getMyPosts,
   });
 
+  console.log(data);
+
   return (
     <>
       <h3 className="w-full px-2 py-4 mb-10 text-lg font-medium border-b-2 border-b-RED sm:w-2/3 md:w-2/5">
         آگهی شما
       </h3>
-
       <div>
         {isLoading ? (
           <Loader />
         ) : (
-          data.data.posts.map((post) => (
+          data?.data.posts.map((post) => (
             <section
               key={post._id}
               className="flex flex-col justify-between gap-4 px-4 py-2 my-4 border-2 rounded cursor-pointer md:flex-row hover:bg-RED/10 hover:border-RED/20"
             >
               <div className="flex gap-8">
                 <img
-                  //   src={`${import.meta.env.VITE_BASE_URL}${post.images[0]}`}
-                  src="divar.svg"
+                  src={`http://localhost:3400${post.images[0]}`}
+                  // src="divar.svg"
                   className="w-16 h-16"
                 />
                 <div>
-                  <p className="font-medium">{post.options.title}</p>
+                  <p className="font-medium">{post.options?.title}</p>
                   <span className="text-xs md:text-sm">
-                    {post.options.content}
+                    {post.options?.content}
                   </span>
                 </div>
               </div>
