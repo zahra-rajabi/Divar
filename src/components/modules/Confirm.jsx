@@ -23,12 +23,7 @@ function Confirm({ open, setOpen, setShow, refetch }) {
   };
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle
-        style={{ fontFamily: "inherit" }}
-        id="draggable-dialog-title"
-      >
-        تأیید خروج
-      </DialogTitle>
+      <DialogTitle style={{ fontFamily: "inherit" }}>تأیید خروج</DialogTitle>
       <DialogContent>
         <DialogContentText style={{ fontFamily: "inherit" }}>
           آیا میخواهید از حساب کاربری خود خارج شوید؟
@@ -36,7 +31,6 @@ function Confirm({ open, setOpen, setShow, refetch }) {
       </DialogContent>
       <DialogActions>
         <Button
-          autoFocus
           onClick={exitHandler}
           style={{
             fontFamily: "inherit",
@@ -47,6 +41,7 @@ function Confirm({ open, setOpen, setShow, refetch }) {
           خارج شدن
         </Button>
         <Button
+          autoFocus
           onClick={handleClose}
           style={{
             fontFamily: "inherit",

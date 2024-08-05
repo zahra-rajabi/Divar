@@ -8,12 +8,13 @@ import Confirm from "components/modules/Confirm";
 
 function Header() {
   const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(false);
+  const [dropDown, setDropDown] = useState(false);
 
   const { data, refetch } = useQuery({
     queryKey: ["profile"],
     queryFn: getProfile,
   });
-  const [show, setShow] = useState(false);
   const showHandler = () => {
     setShow(true);
   };
@@ -22,8 +23,12 @@ function Header() {
     setShow(false);
   };
 
+  const openDropDown = (e) => {
+    e.preventDefault();
+    setDropDown(!dropDown);
+  };
   return (
-    <header className="flex flex-wrap items-center justify-between px-1 py-2 border-b-2">
+    <header className="flex flex-wrap items-center justify-between px-1 py-2 border-b-2 ">
       <div className="flex items-center gap-4">
         <Link to="/">
           <img src="divar.svg" className="w-12 h-12" />
@@ -33,14 +38,44 @@ function Header() {
           <p>تهران</p>
         </span>
       </div>
-
       <div className="items-center hidden gap-8 sm:flex">
-        <Link to="/auth">
-          <span className="flex items-center gap-1">
+        <div className="">
+          <span
+            className="relative flex items-center gap-1 cursor-pointer"
+            onClick={openDropDown}
+          >
             <img src="profile.svg" />
             <p>دیوار من</p>
+
+            <div
+              className={` sm:flex flex-col gap-4 absolute top-full translate-y-4 rounded transition-all duration-300 w-max px-4 py-2 text-white  bg-RED/90 ${
+                dropDown
+                  ? " opacity-100 visible pointer-events-auto"
+                  : "opacity-0  invisible pointer-events-none"
+              }`}
+            >
+              <Link to="/auth" onClick={closeHandler}>
+                {data ? "داشبورد" : "ورود"}
+              </Link>
+              {data && data.data.role === "ADMIN" && (
+                <Link to="/admin" onClick={closeHandler}>
+                  پنل ادمین
+                </Link>
+              )}
+              {data && (
+                <>
+                  <Link onClick={() => setOpen(true)}>خروج</Link>
+                  <Confirm
+                    open={open}
+                    setOpen={setOpen}
+                    setShow={setShow}
+                    refetch={refetch}
+                  />
+                </>
+              )}
+            </div>
           </span>
-        </Link>
+        </div>
         <Link to="/dashboard" className="button">
           ثبت آگهی
         </Link>

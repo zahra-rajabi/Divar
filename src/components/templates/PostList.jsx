@@ -8,7 +8,7 @@ function PostList() {
     queryKey: ["MyPosts"],
     queryFn: getMyPosts,
   });
-  console.log(data?.data.posts);
+
   return (
     <>
       <h3 className="w-full px-2 py-4 mb-10 text-lg font-medium border-b-2 border-b-RED sm:w-2/3 md:w-2/5">
