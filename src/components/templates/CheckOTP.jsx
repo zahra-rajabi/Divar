@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { getProfile } from "services/user";
 import { useQuery } from "@tanstack/react-query";
+import { e2p, p2e } from "utils/numbers";
 
 function CheckOTP({ code, setCode, setStep, mobileNumber }) {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function CheckOTP({ code, setCode, setStep, mobileNumber }) {
   } = useForm();
 
   const submitHandler = async () => {
-    const { response, error } = await checkOTP(mobileNumber, code);
+    const { response, error } = await checkOTP(p2e(mobileNumber), p2e(code));
     if (error) console.log(error.response.data.message);
     if (response)
       setCookie({
@@ -55,11 +56,11 @@ function CheckOTP({ code, setCode, setStep, mobileNumber }) {
               autoComplete="off"
               className="input"
               placeholder="کد تایید"
-              value={code}
+              value={e2p(code)}
               {...register("code", {
                 required: "کد ارسالی را وارد نمایید",
                 pattern: {
-                  value: /[0-9]{5}/,
+                  value: e2p(/[0-9]{5}/),
                   message: "کد ارسالی باید پنج رقم باشد",
                 },
               })}

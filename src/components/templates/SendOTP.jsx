@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { sendOTP } from "services/auth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { e2p, p2e } from "utils/numbers";
 
 function SendOTP({ mobileNumber, setStep, setMobileNumber }) {
   const {
@@ -11,7 +12,7 @@ function SendOTP({ mobileNumber, setStep, setMobileNumber }) {
   } = useForm();
 
   const submitHandler = async () => {
-    const { response, error } = await sendOTP(mobileNumber);
+    const { response, error } = await sendOTP(p2e(mobileNumber));
     if (response) setStep(2);
     if (error) console.log(error.response);
   };
@@ -43,11 +44,11 @@ function SendOTP({ mobileNumber, setStep, setMobileNumber }) {
               placeholder="شماره موبایل"
               autoComplete="off"
               className="input"
-              value={mobileNumber}
+              value={e2p(mobileNumber)}
               {...register("mobile", {
                 required: "وارد کردن شماره موبایل الزامی است",
                 pattern: {
-                  value: /[0-9]{11}/,
+                  value: e2p(/[0-9]{11}/),
                   message: " یک شماره موبایل معتبر وارد نمایید .",
                 },
               })}

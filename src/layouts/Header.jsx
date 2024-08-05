@@ -13,24 +13,26 @@ function Header() {
     setShow(false);
   };
   return (
-    <header className="flex items-center justify-between border-b-2 py-2 px-1  flex-wrap">
+    <header className="flex flex-wrap items-center justify-between px-1 py-2 border-b-2">
       <div className="flex items-center gap-4">
         <Link to="/">
           <img src="divar.svg" className="w-12 h-12" />
         </Link>
-        <span className="flex items-center gap-1 border-r-2 px-6 ">
+        <span className="flex items-center gap-1 px-6 border-r-2 ">
           <img src="location.svg" />
           <p>تهران</p>
         </span>
       </div>
-      <div className="hidden items-center gap-8  sm:flex">
+      <div className="items-center hidden gap-8 sm:flex">
         <Link to="/auth">
           <span className="flex items-center gap-1">
             <img src="profile.svg" />
             <p>دیوار من</p>
           </span>
         </Link>
-        <Link to="/dashboard">ثبت آگهی</Link>
+        <Link to="/dashboard" className="button">
+          ثبت آگهی
+        </Link>
       </div>
       {!show && (
         <IoMenu
@@ -53,6 +55,7 @@ function Header() {
             <p>دیوار من</p>
           </span>
         </Link>
+
         <Link to="/dashboard">ثبت آگهی</Link>
       </div>
     </header>
