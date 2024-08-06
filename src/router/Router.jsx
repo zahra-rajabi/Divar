@@ -7,8 +7,9 @@ import HomePage from "pages/HomePage";
 import { useQuery } from "@tanstack/react-query";
 import { getProfile } from "services/user";
 import Loader from "components/modules/Loader";
-function Router() {
-  const { data, error, isLoading } = useQuery({
+import SinglePostPage from "pages/SinglePostPage";
+function Router({ open, setOpen }) {
+  const { data, isLoading } = useQuery({
     queryKey: ["profile"],
     queryFn: getProfile,
   });
@@ -16,8 +17,9 @@ function Router() {
 
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<HomePage open={open} setOpen={setOpen} />} />
       <Route path="*" element={<NotFound />} />
+      <Route path="/posts/:id" element={<SinglePostPage />} />
       <Route
         path="/auth"
         element={data ? <Navigate to="/dashboard" /> : <AuthPage />}

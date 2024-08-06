@@ -20,6 +20,9 @@ export default {
           "sans-serif",
         ],
       },
+      screens: {
+        xs: "420px",
+      },
     },
   },
   plugins: [],
