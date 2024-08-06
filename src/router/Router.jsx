@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getProfile } from "services/user";
 import Loader from "components/modules/Loader";
 import SinglePostPage from "pages/SinglePostPage";
-function Router({ open, setOpen }) {
+function Router({ show, setShow }) {
   const { data, isLoading } = useQuery({
     queryKey: ["profile"],
     queryFn: getProfile,
@@ -17,7 +17,7 @@ function Router({ open, setOpen }) {
 
   return (
     <Routes>
-      <Route path="/" element={<HomePage open={open} setOpen={setOpen} />} />
+      <Route path="/" element={<HomePage show={show} setShow={setShow} />} />
       <Route path="*" element={<NotFound />} />
       <Route path="/posts/:id" element={<SinglePostPage />} />
       <Route

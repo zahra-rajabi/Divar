@@ -1,10 +1,10 @@
 import Header from "layouts/Header";
 import Footer from "layouts/Footer";
 
-function Layout({ children, open, setOpen }) {
+function Layout({ children, show, setShow }) {
   return (
     <>
-      <Header open={open} setOpen={setOpen} />
+      <Header show={show} setShow={setShow} />
       <section> {children}</section>
       <Footer />
     </>

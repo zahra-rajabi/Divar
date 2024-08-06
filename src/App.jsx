@@ -6,15 +6,15 @@ import Layout from "layouts/Layout";
 import { useState } from "react";
 
 function App() {
-  const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(false);
   const queryClient = new QueryClient({
     defaultOptions,
   });
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <Layout open={open} setOpen={setOpen}>
-          <Router open={open} setOpen={setOpen} />
+        <Layout show={show} setShow={setShow}>
+          <Router show={show} setShow={setShow} />
         </Layout>
       </BrowserRouter>
     </QueryClientProvider>

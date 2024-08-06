@@ -6,8 +6,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getProfile } from "services/user";
 import Confirm from "components/modules/Confirm";
 
-function Header({ open, setOpen }) {
-  const [show, setShow] = useState(false);
+function Header({ show, setShow }) {
+  const [open, setOpen] = useState(false);
   const [dropDown, setDropDown] = useState(false);
 
   const { data, refetch } = useQuery({

@@ -5,7 +5,7 @@ import Sidebar from "components/templates/Sidebar";
 import { getCategory } from "services/admin";
 import { getAllPost } from "services/user";
 
-function HomePage({ open, setOpen }) {
+function HomePage({ show, setShow }) {
   const { data, isLoading } = useQuery({
     queryKey: ["AllPosts"],
     queryFn: getAllPost,
@@ -15,12 +15,11 @@ function HomePage({ open, setOpen }) {
     queryFn: getCategory,
   });
 
-  console.log({ data });
   return isLoading || isloading ? (
     <Loader />
   ) : (
-    <main className="flex flex-col gap-6 overflow-hidden xs:flex-row md:gap-12">
-      <Sidebar data={Data} open={open} setOpen={setOpen} />
+    <main className="flex flex-col gap-6 xs:flex-row md:gap-12">
+      <Sidebar data={Data} show={show} setShow={setShow} />
       <Main data={data} />
     </main>
   );

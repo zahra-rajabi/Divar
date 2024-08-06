@@ -1,8 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { e2p, sp } from "utils/numbers";
 
 function Main({ data }) {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("category");
 
   return (
     <section className="flex flex-wrap w-full gap-8 xs:my-8 ">
