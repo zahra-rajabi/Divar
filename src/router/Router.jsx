@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getProfile } from "services/user";
 import Loader from "components/modules/Loader";
 import SinglePostPage from "pages/SinglePostPage";
+import Danger from "pages/Danger";
 function Router({ show, setShow }) {
   const { data, isLoading } = useQuery({
     queryKey: ["profile"],
@@ -28,6 +29,7 @@ function Router({ show, setShow }) {
         path="/dashboard"
         element={data ? <DashboardPage /> : <Navigate to="/auth" />}
       />
+      <Route path="/danger" element={<Danger />} />
       <Route
         path="/admin"
         element={
