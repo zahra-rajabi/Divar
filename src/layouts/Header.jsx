@@ -30,10 +30,10 @@ function Header({ show, setShow }) {
     <header className="flex flex-wrap items-center justify-between px-1 py-2 border-b-2 ">
       <div className="flex items-center gap-4">
         <Link to="/">
-          <img src="divar.svg" className="w-12 h-12" />
+          <img src="/divar.svg" className="w-12 h-12" />
         </Link>
         <span className="flex items-center gap-1 px-6 border-r-2 ">
-          <img src="location.svg" />
+          <img src="/location.svg" />
           <p>تهران</p>
         </span>
       </div>
@@ -43,7 +43,7 @@ function Header({ show, setShow }) {
             className="relative flex items-center gap-1 cursor-pointer"
             onClick={openDropDown}
           >
-            <img src="profile.svg" />
+            <img src="/profile.svg" />
             <p>دیوار من</p>
 
             <div
