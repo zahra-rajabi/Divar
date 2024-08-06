@@ -23,6 +23,8 @@ function Sidebar({ data, show, setShow }) {
     } else {
       setSearchParams("");
     }
+
+    setShowSideBar(false);
   };
   return (
     <section className="relative xs:static w-fit">
