@@ -20,7 +20,7 @@ function HomePage({ show, setShow }) {
   ) : (
     <main className="flex flex-col gap-6 xs:flex-row md:gap-12">
       <Sidebar data={Data} show={show} setShow={setShow} />
-      <Main data={data} />
+      <Main data={data} category={Data} />
     </main>
   );
 }
