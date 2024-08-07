@@ -22,8 +22,11 @@ export default {
       },
       screens: {
         xs: "420px",
+        xlg: "960px",
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwind-scrollbar")({ preferredStrategy: "pseudoelements" }),
+  ],
 };

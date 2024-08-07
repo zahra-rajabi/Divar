@@ -40,7 +40,7 @@ function Sidebar({ data, show, setShow }) {
       <ul
         className={`${
           showSideBar ? "right-0 h-48 overflow-y-scroll" : "-right-[500%]"
-        } rounded xs:h-fit xs:overflow-auto space-y-4 w-max mb-4 px-2 py-4 xs:px-0 xs:py-0 absolute xs:static transition-all shadow-lg duration-300 bg-gray-100 xs:bg-transparent xs:shadow-none `}
+        } rounded scrollbar-thin scrollbar-thumb-RED scrollbar-track-white xs:h-fit xs:overflow-auto space-y-4 w-max mb-4 px-2 py-4 xs:px-0 xs:py-0 absolute xs:static transition-all shadow-lg duration-300 bg-gray-100 xs:bg-transparent xs:shadow-none `}
       >
         {data?.data.map((category) => (
           <li
