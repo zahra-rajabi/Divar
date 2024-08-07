@@ -29,7 +29,7 @@ function Sidebar({ data, show, setShow }) {
   return (
     <section className="relative xs:static w-fit">
       <h3
-        className="flex items-center my-4 font-medium cursor-pointer xs:mt-8 xs:cursor-default"
+        className="flex items-center mt-8 mb-4 font-medium cursor-pointer xs:mt-8 xs:cursor-default"
         onClick={showHandler}
       >
         <span className="mx-2 xs:hidden">
