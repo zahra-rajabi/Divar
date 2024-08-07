@@ -3,7 +3,7 @@ import { newTokens } from "services/token";
 import { getCookie, setCookie } from "utils/cookie";
 
 const api = axios.create({
-  baseURL: "https://silly-arithmetic-638376.netlify.app/api/",
+  baseURL: "https://divar-api-backend-2.netlify.app/api/",
   headers: {
     "Content-Type": "application/json",
   },
