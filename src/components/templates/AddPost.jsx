@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { getCategory } from "services/admin";
 import { getCookie } from "utils/cookie";
@@ -170,8 +171,11 @@ function AddPost() {
       />
       {errors?.image && <p className="categoryError">{errors.image.message}</p>}
 
-      <button className="my-8 button" type="submit">
+      <button className=" button" type="submit">
         ایجاد آگهی
+      </button>
+      <button className="px-4 py-1 border rounded text-RED border-RED">
+        <Link to="/">مشاهده پست ها</Link>
       </button>
     </form>
   );
